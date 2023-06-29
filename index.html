@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/styles.css">
-    <title>Formulário</title>
+    <title>Birthdays</title>
 </head>
 <body>
-    <h1>Meus aniversários</h1>
-    <form class="formulario-principal" data-formulario>
-        <label for="nome" class="label">Nome
-            <input  type="text" class="input" id="nome"  minlength="3" maxlength="120" name="name" required>
-        </label>
-        <label for="birth-date" class="label">Data de Nascimento
-            <input type="date" class="campo-escrita" id="birth-date" maxlength="120" name="birth-date" required>
-        </label>
+    <h1>Birthdays</h1>
+    <form class="form js-form">
+        <label for="name">Nome</label>
+        <input type="text" class="form-field js-field" id="name" name="name" minlength="3" maxlength="120"required>
+        <label for="birth">Data de Nascimento</label>
+        <input type="date" class="form-field js-field" id="birth" name="birth" required>
         <button type="submit">Salvar</button>
     </form>
+    <script src="./js/script.js"></script>
 </body>
 </html>
