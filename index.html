@@ -5,17 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/styles.css">
-    <title>Birthdays</title>
+    <title>Aniversário</title>
 </head>
 <body>
-    <h1>Birthdays</h1>
-    <form class="form" id="form">
-        <label for="name">Nome:</label>
-        <input type="text" class="form-field js-field" id="name" name="name" minlength="3" pattern="([aA-zZ\s]+)" maxlength="120" required>
-        <label for="birth">Data de Nascimento:</label>
-        <input type="date" class="form-field js-field" id="birth" name="birth" pattern="\d{2}/\d{2}/\d{4}" required>
-        <button type="submit">Salvar</button>
-    </form>
+    <main class="conteudo">
+        <h1 class="titulo">Aniversários</h1>
+        <form class="form" id="form">
+            <label for="nome">Nome da pessoa</label>
+            <input type="text" class="form-field js-field" id="nome" name="nome" minlength="3" pattern="([aA-zZ\s]+)" maxlength="120" required placeholder="Campo obrigatório">
+            <label for="birth">Data de Nascimento</label>
+            <input type="date" class="form-field js-field" id="aniversario" name="aniversario" pattern="\d{2}/\d{2}/\d{4}" required>
+            <button type="submit">Salvar</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Data de aniversario</td>
+                    <td>Ações</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Augusto</td>
+                    <td>06/02/1994</td>
+                    <td>
+                        <button>Editar</button>
+                        <button>Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </main>
     <script src="./js/script.js" type="module"></script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+:root {
+    --cor-do-fundo: #FFFFFF;
+    --fonte-principal: 'inter';
+    --cor-da-fonte: #000000;
+    --cor-do-botao: #F5F5F5;
+    --cor-botao-hover: #F2F2F2;
+}
+
+.titulo {
+    background-color: var(--cor-de-fundo);
+    color: var(--cor-da-fonte);
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #F2F2F2;
+}
+
+tr:hover {
+    background-color: #F5F5F5;
+}

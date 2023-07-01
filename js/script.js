@@ -5,11 +5,11 @@ const formField = document.querySelectorAll("[required]");
 
 form .addEventListener("submit", (evento) => {
     evento.preventDefault();
-    criaElemento(evento.target.elements['name'].value, evento.target.elements['birth'].value)
+    criaElemento(evento.target.elements['nome'].value, evento.target.elements['aniversario'].value)
 })
 
-function criaElemento(name, birth) {
-    console.log(name, birth)
+function criaElemento(nome, aniversario) {
+    console.log(nome, aniversario)
 }
 
 formField.forEach((campo) => {
@@ -17,7 +17,7 @@ formField.forEach((campo) => {
 })
 
 function verificaCampo(campo) {
-    if (campo.name == "birth" && campo.value != "") {
+    if (campo.name == "aniversario" && campo.value != "") {
         idadeValida(campo);
     }
 }
