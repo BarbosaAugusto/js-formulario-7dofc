@@ -1,25 +1,68 @@
 :root {
-    --cor-do-fundo: #FFFFFF;
-    --fonte-principal: 'inter';
+    --cor-do-fundo: #f2f2f2;
+    --fonte-principal: 'Open Sans', sans-serif;
     --cor-da-fonte: #000000;
     --cor-do-botao: #F5F5F5;
     --cor-botao-hover: #F2F2F2;
+    --cor-borda-tabela: #c7c7c7;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: var(--fonte-principal);
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: var(--cor-do-fundo);
+    background: var(--cor-do-fundo);
 }
 
 .titulo {
-    background-color: var(--cor-de-fundo);
+    padding: 50px;
+    text-align: center;
     color: var(--cor-da-fonte);
+    font-size: 2rem;
+    font-weight: 600;
 }
 
-table {
-    border-collapse: collapse;
-    width: 80%;
+.form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
 }
+
+.form-field {
+    margin: 5px 0;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border-style: none;
+}
+
+.button-submit {
+    width: 25%;
+    padding: 10px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #FFFFFF;
+}
+
+.button-submit:hover {
+    background-color: var(--cor-do-fundo);
+}
+
+.tabela {
+    border: 1px solid var(--cor-borda-tabela);
+    width: 50%;
+}
+
+.nomeLista, .dataLista, .botaoLista {}
 
 th, td {
     text-align: left;
     padding: 8px;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #000000;
 }
 
 th {
