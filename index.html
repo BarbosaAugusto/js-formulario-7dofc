@@ -14,26 +14,26 @@
             <label for="nome">Nome da pessoa</label>
             <input type="text" class="form-field js-field" id="nome" name="nome" minlength="3" pattern="([aA-zZ\s]+)" maxlength="120" required placeholder="Campo obrigatório">
             <label for="birth">Data de Nascimento</label>
-            <input type="date" class="form-field js-field" id="aniversario" name="aniversario" pattern="\d{2}/\d{2}/\d{4}" required>
-            <button type="submit">Salvar</button>
+            <input type="date" class="form-field js-field" id="aniversario" name="aniversario" pattern="\d{2}/\d{2}/\d{4}" required data>
+            <button type="submit" class="button-submit">Salvar</button>
         </form>
         <table class="tabela">
-            <thead>
-                <tr>
-                    <td>Nome</td>
-                    <td>Data de Nascimento</td>
-                    <td>Ações</td>
+            <thead class="cabeca">
+                <tr class="linha-cabeca">
+                    <th class="celula-cabeca">Nome</th>
+                    <th class="celula-cabeca">Data de Nascimento</th>
+                    <th class="celula-cabeca">Ações</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td class="nomeLista">Augusto</td>
-                    <td class="dataLista">06/02/1994</td>
-                    <td class="botaoLista">
+            <tbody id="tbody">
+                <!-- <tr class="linha-tabela">
+                    <td class="celula">Augusto</td>
+                    <td class="celula">06/02/1994</td>
+                    <td class="celula">
                         <button>Editar</button>
                         <button>Excluir</button>
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
         </main>

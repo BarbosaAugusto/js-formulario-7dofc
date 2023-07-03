@@ -1,10 +1,10 @@
 :root {
-    --cor-do-fundo: #f2f2f2;
+    --cor-do-fundo: #FFFFFF;
     --fonte-principal: 'Open Sans', sans-serif;
-    --cor-da-fonte: #000000;
-    --cor-do-botao: #F5F5F5;
+    --cor-da-fonte: #2d3748;
+    --cor-do-botao: #e2e8f0;
     --cor-botao-hover: #F2F2F2;
-    --cor-borda-tabela: #c7c7c7;
+    --cor-borda-tabela: #e2e8f0;
 }
 
 body {
@@ -12,13 +12,18 @@ body {
     height: 100vh;
     font-family: var(--fonte-principal);
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
     background-color: var(--cor-do-fundo);
     background: var(--cor-do-fundo);
+    text-decoration: none solid rgb(45, 55, 72);
+}
+
+.conteudo {
+    margin: 50px;
 }
 
 .titulo {
-    padding: 50px;
+    margin-bottom: 50px;
     text-align: center;
     color: var(--cor-da-fonte);
     font-size: 2rem;
@@ -29,7 +34,6 @@ body {
     width: 50%;
     display: flex;
     flex-direction: column;
-    margin: 50px;
 }
 
 .form-field {
@@ -38,6 +42,8 @@ body {
     padding: 10px;
     border-radius: 10px;
     border-style: none;
+    color: var(--cor-da-fonte);
+    background-color: var(--cor-do-botao);
 }
 
 .button-submit {
@@ -45,30 +51,32 @@ body {
     padding: 10px;
     border-radius: 10px;
     border-style: none;
-    background-color: #FFFFFF;
+    background-color:var(--cor-do-botao);
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .button-submit:hover {
-    background-color: var(--cor-do-fundo);
+    background-color: var(--cor-borda-tabela);
+    transition: background-color 0.5s;
 }
 
 .tabela {
-    border: 1px solid var(--cor-borda-tabela);
-    width: 50%;
+    width: 100%;
+    margin-top: 30px;
 }
 
-.nomeLista, .dataLista, .botaoLista {}
-
-th, td {
+.celula-cabeca, .celula {
     text-align: left;
     padding: 8px;
-    border: 1px solid #000000;
+    border: 1px solid var(--cor-borda-tabela);
 }
 
-th {
-    background-color: #F2F2F2;
+.celula-cabeca {
+    font-style: bold;
+    font-weight: 600;
 }
 
 tr:hover {
-    background-color: #F5F5F5;
+    background-color: var(--cor-do-botao);
 }
