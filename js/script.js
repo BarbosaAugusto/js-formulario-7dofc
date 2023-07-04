@@ -2,6 +2,10 @@ import idadeValida from "./valida-idade.js";
 
 const form = document.querySelector("#form");
 const formField = document.querySelectorAll("[required]");
+const listaAniversariantes = JSON.parse(localStorage.getItem("listaAniversariantes")) || [];
+
+console.log(listaAniversariantes)
+
 
 form .addEventListener("submit", (evento) => {
     evento.preventDefault();
@@ -9,30 +13,60 @@ form .addEventListener("submit", (evento) => {
 })
  
 function criaElemento(nome, aniversario) {
-    console.log(nome, aniversario)
-
-    const novaPessoa = document.createElement('td');
-    novaPessoa.classList.add("celula");
-
-    const novaData = document.createElement('td');
-    novaData.innerHTML = aniversario;
+    const tabela = document.querySelector("#tabela-dados tbody");
+  
+    const novaLinha = document.createElement("tr");
+    const colunaNome = document.createElement("td");
+    const colunaAniversario = document.createElement("td");
+    const colunaAcoes = document.createElement("td");
     
-    novaPessoa.appendChild(novaData)
-    novaPessoa.innerHTML += nome
+    colunaNome.textContent = nome;
+    colunaAniversario.textContent = aniversario;
+    
+    const botaoEditar = document.createElement("button");
+    botaoEditar.textContent = "Editar";
+    botaoEditar.addEventListener("click", () => {
+      // Lógica para ação de editar
+      console.log("Editar: " + nome);
+    });
+    
+    const botaoExcluir = document.createElement("button");
+    botaoExcluir.textContent = "Excluir";
+    botaoExcluir.addEventListener("click", () => {
+      // Lógica para ação de excluir
+      console.log("Excluir: " + nome);
+    });
+    
+    colunaAcoes.appendChild(botaoEditar);
+    colunaAcoes.appendChild(botaoExcluir);
+    
+    novaLinha.appendChild(colunaNome);
+    novaLinha.appendChild(colunaAniversario);
+    novaLinha.appendChild(colunaAcoes);
 
-    const lista = document.getElementById("corpo")
+    novaLinha.classList.add("linha-tabela");
+    colunaNome.classList.add("celula-nome");
+    colunaAniversario.classList.add("celula-data");
+    colunaAcoes.classList.add("celula-acoes"); 
+    
+    const aniversarianteAtual = {
+        nome: nome,
+        aniversario: aniversario
+    };
+    
+    listaAniversariantes.push(aniversarianteAtual)
 
-    lista.appendChild(novaPessoa)
+    localStorage.setItem("listaAniversariantes", JSON.stringify(listaAniversariantes))
 
-    console.log(novaPessoa)
+    tabela.appendChild(novaLinha);
 }
 
-formField.forEach((campo) => {
-    campo.addEventListener("blur", () => verificaCampo(campo))
-})
+// formField.forEach((campo) => {
+//     campo.addEventListener("blur", () => verificaCampo(campo))
+// })
 
-function verificaCampo(campo) {
-    if (campo.name == "aniversario" && campo.value != "") {
-        idadeValida(campo);
-    }
-}
+// function verificaCampo(campo) {
+//     if (campo.name == "aniversario" && campo.value != "") {
+//         idadeValida(campo);
+//     }
+// }

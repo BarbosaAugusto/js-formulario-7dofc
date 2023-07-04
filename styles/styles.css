@@ -66,17 +66,29 @@ body {
     margin-top: 30px;
 }
 
-.celula-cabeca, .celula {
-    text-align: left;
-    padding: 8px;
-    border: 1px solid var(--cor-borda-tabela);
-}
-
-.celula-cabeca {
+.nome-cabeca, .data-cabeca, .cabeca-acoes {
     font-style: bold;
     font-weight: 600;
+    text-align: center;
+    border: 1px solid var(--cor-borda-tabela);
+    padding: 10px;
 }
 
-tr:hover {
-    background-color: var(--cor-do-botao);
+.nome-cabeca {
+    width: 50%;
+}
+
+.data-cabeca {
+    width: 25%;
+}
+
+.celula-nome, .celula-data, .celula-acoes {
+    text-align: left;
+    border: 1px solid var(--cor-borda-tabela);
+    padding: 10px;
+}
+
+.celula-acoes {
+    display: flex;
+    justify-content: space-evenly;
 }
