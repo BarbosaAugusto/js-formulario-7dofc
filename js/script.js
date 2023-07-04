@@ -4,15 +4,34 @@ const form = document.querySelector("#form");
 const formField = document.querySelectorAll("[required]");
 const listaAniversariantes = JSON.parse(localStorage.getItem("listaAniversariantes")) || [];
 
-console.log(listaAniversariantes)
+listaAniversariantes.forEach( (elemento) => {
+    criaElemento(elemento);
+})
 
 
 form .addEventListener("submit", (evento) => {
     evento.preventDefault();
-    criaElemento(evento.target.elements['nome'].value, evento.target.elements['aniversario'].value)
+
+    const nome = evento.target.elements['nome'];
+    const aniversario = evento.target.elements['aniversario'];
+
+    const aniversarianteAtual = {
+        "nome": nome.value,
+        "aniversario": aniversario.value
+    };
+
+    criaElemento(aniversarianteAtual);
+    
+    listaAniversariantes.push(aniversarianteAtual)
+
+    localStorage.setItem("listaAniversariantes", JSON.stringify(listaAniversariantes))
+
+    nome.value = "";
+    aniversario.value = "";
+
 })
  
-function criaElemento(nome, aniversario) {
+function criaElemento(aniversariante) {
     const tabela = document.querySelector("#tabela-dados tbody");
   
     const novaLinha = document.createElement("tr");
@@ -20,8 +39,8 @@ function criaElemento(nome, aniversario) {
     const colunaAniversario = document.createElement("td");
     const colunaAcoes = document.createElement("td");
     
-    colunaNome.textContent = nome;
-    colunaAniversario.textContent = aniversario;
+    colunaNome.textContent = aniversariante.nome;
+    colunaAniversario.textContent = aniversariante.aniversario;
     
     const botaoEditar = document.createElement("button");
     botaoEditar.textContent = "Editar";
@@ -48,15 +67,6 @@ function criaElemento(nome, aniversario) {
     colunaNome.classList.add("celula-nome");
     colunaAniversario.classList.add("celula-data");
     colunaAcoes.classList.add("celula-acoes"); 
-    
-    const aniversarianteAtual = {
-        nome: nome,
-        aniversario: aniversario
-    };
-    
-    listaAniversariantes.push(aniversarianteAtual)
-
-    localStorage.setItem("listaAniversariantes", JSON.stringify(listaAniversariantes))
 
     tabela.appendChild(novaLinha);
 }
