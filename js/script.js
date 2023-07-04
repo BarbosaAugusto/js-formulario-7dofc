@@ -15,9 +15,19 @@ form .addEventListener("submit", (evento) => {
     const nome = evento.target.elements['nome'];
     const aniversario = evento.target.elements['aniversario'];
 
+    const formatandoData = aniversario.value
+    const dataAniversario = new Date(formatandoData);
+    
+    const dia = dataAniversario.getDate() + 1;
+    const mes = dataAniversario.getMonth() + 1;
+    const ano = dataAniversario.getFullYear();
+
+    const dataFormatada = dia + '/' + mes + '/' + ano;
+    console.log(dataFormatada);
+
     const aniversarianteAtual = {
         "nome": nome.value,
-        "aniversario": aniversario.value
+        "aniversario": dataFormatada
     };
 
     criaElemento(aniversarianteAtual);
