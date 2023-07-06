@@ -55,8 +55,8 @@ function criaElemento(aniversariante) {
 
     const botaoEditar = document.createElement("button");
     botaoEditar.innerText = "Editar";
-    botaoEditar.addEventListener("click", function() {
-        editarElemento(this.parentNode.parentNode);
+    botaoEditar.addEventListener("click", function(id) {
+        editarElemento(this.parentNode.parentNode, id);
     });
 
     const botaoExcluir = document.createElement("button");
@@ -89,7 +89,49 @@ function deletaElemento(linha, id) {
     listaAniversariantes.splice(listaAniversariantes.findIndex(elemento => elemento.id === id), 1)
 
     localStorage.setItem("listaAniversariantes",JSON.stringify(listaAniversariantes));
+}   
+  
+function editarElemento(linha) {
+    const colunaNome = linha.querySelector(".celula-nome");
+    const colunaAniversario = linha.querySelector(".celula-data");
+  
+    const nomeAtual = colunaNome.textContent;
+    const aniversarioAtual = colunaAniversario.textContent;
+    const partesData = aniversarioAtual.split('/');
+    
+    const dia = partesData[0].padStart(2, '0');
+    const mes = partesData[1].padStart(2, '0');
+    const ano = partesData[2];
+    
+    const formatoAceito = `${ano}-${mes}-${dia}`;
+    
+    
+    console.log(formatoAceito)
+
+    const campoName = document.querySelector("#nome");
+    const campoAniversario = document.querySelector("#aniversario")
+
+    campoName.value = nomeAtual;
+    campoAniversario.value = formatoAceito;
+    campoName.focus()
+    
+
+
+
+    campoName.addEventListener("input", updateValueNome);
+    campoAniversario.addEventListener("input", updateValueAniversario);
+
+    function updateValueNome(e) {
+        colunaNome.textContent = e.target.value;
+    }
+
+    function updateValueAniversario(e) {
+        colunaAniversario.textContent = e.target.value;
+    }
 }
+ 
+  
+  
 
 // formField.forEach((campo) => {
 //     campo.addEventListener("blur", () => verificaCampo(campo))
