@@ -48,7 +48,6 @@ function criaElemento(aniversariante) {
     const mes = dataAniversario.getMonth() + 1;
     const ano = dataAniversario.getFullYear();
     const dataFormatada = `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${ano}`;
-    console.log(dataFormatada)
 
     colunaNome.textContent = aniversariante.nome;
     colunaAniversario.textContent = dataFormatada;
@@ -95,7 +94,6 @@ function deletaElemento(linha, id) {
 }   
   
 function editarElemento(aniversariante) {
-    const formEdicao = document.querySelector("[data-form]");
     const nome = document.querySelector("#nome");
     const aniversario = document.querySelector("#aniversario");
     const linha = document.querySelector(`td[data-id="${aniversariante.id}"]`).parentNode;
