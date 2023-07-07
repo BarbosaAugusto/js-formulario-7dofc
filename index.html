@@ -10,12 +10,12 @@
 <body>
     <main class="conteudo">
         <h1 class="titulo">Aniversários</h1>
-        <form class="form" id="form">
+        <form class="form" id="form" data-form>
             <label for="nome">Nome da pessoa</label>
             <input type="text" class="form-field js-field" id="nome" name="nome" minlength="3" pattern="([aA-zZ\s]+)" maxlength="120" required placeholder="Campo obrigatório">
             <label for="birth">Data de Nascimento</label>
-            <input type="date" class="form-field js-field" id="aniversario" name="aniversario" pattern="\d{2}/\d{2}/\d{4}" required data>
-            <button type="submit" class="button-submit">Salvar</button>
+            <input type="date" class="form-field js-field" id="aniversario" name="aniversario" pattern="\d{2}/\d{2}/\d{4}" required>
+            <button type="submit" class="button-submit" id="submit-button">Salvar</button>
         </form>
         <table class="tabela" id="tabela-dados">
             <thead class="cabeca">
