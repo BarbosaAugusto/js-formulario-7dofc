@@ -15,49 +15,51 @@ form.addEventListener("submit", (evento) => {
     const nome = evento.target.elements['nome'];
     const aniversario = evento.target.elements['aniversario'];
 
-    const formatandoData = aniversario.value
-    const dataAniversario = new Date(formatandoData);
-
-    const dia = dataAniversario.getDate() + 1;
-    const mes = dataAniversario.getMonth() + 1;
-    const ano = dataAniversario.getFullYear();
-
-    const dataFormatada = dia + '/' + mes + '/' + ano;
-
+    
     const aniversarianteAtual = {
+        "id": Date.now(),
         "nome": nome.value,
-        "aniversario": dataFormatada
+        "aniversario": aniversario.value
     };
-
+    
     criaElemento(aniversarianteAtual);
-
+    
     listaAniversariantes.push(aniversarianteAtual)
-
+    
     localStorage.setItem("listaAniversariantes", JSON.stringify(listaAniversariantes))
-
+    
     nome.value = "";
     aniversario.value = "";
-
+    
 })
 
 function criaElemento(aniversariante) {
     const tabela = document.querySelector("#tabela-dados");
-
+    
+    
     const novaLinha = document.createElement("tr");
     const colunaNome = document.createElement("td");
     const colunaAniversario = document.createElement("td");
     const colunaAcoes = document.createElement("td");
     
+    const formatandoData = aniversariante.aniversario;
+    const dataAniversario = new Date(formatandoData);
+    const dia = dataAniversario.getDate() +1;
+    const mes = dataAniversario.getMonth() + 1;
+    const ano = dataAniversario.getFullYear();
+    const dataFormatada = `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${ano}`;
+    console.log(dataFormatada)
 
     colunaNome.textContent = aniversariante.nome;
-    colunaAniversario.textContent = aniversariante.aniversario;
+    colunaAniversario.textContent = dataFormatada;
     colunaNome.dataset.id = aniversariante.id;
 
     const botaoEditar = document.createElement("button");
     botaoEditar.innerText = "Editar";
-    botaoEditar.addEventListener("click", function(id) {
-        editarElemento(this.parentNode.parentNode, id);
+    botaoEditar.addEventListener("click", function() {
+        editarElemento(aniversariante);
     });
+    
 
     const botaoExcluir = document.createElement("button");
     botaoExcluir.innerText = "Excluir";
@@ -81,6 +83,7 @@ function criaElemento(aniversariante) {
     colunaAcoes.classList.add("celula-acoes");
 
     tabela.appendChild(novaLinha);
+
 }
 
 function deletaElemento(linha, id) {
@@ -91,44 +94,45 @@ function deletaElemento(linha, id) {
     localStorage.setItem("listaAniversariantes",JSON.stringify(listaAniversariantes));
 }   
   
-function editarElemento(linha) {
-    const colunaNome = linha.querySelector(".celula-nome");
-    const colunaAniversario = linha.querySelector(".celula-data");
-  
-    const nomeAtual = colunaNome.textContent;
-    const aniversarioAtual = colunaAniversario.textContent;
-    const partesData = aniversarioAtual.split('/');
+function editarElemento(aniversariante) {
+    const formEdicao = document.querySelector("[data-form]");
+    const nome = document.querySelector("#nome");
+    const aniversario = document.querySelector("#aniversario");
+    const linha = document.querySelector(`td[data-id="${aniversariante.id}"]`).parentNode;
+    const celulaNome = linha.querySelector(".celula-nome");
+    const celulaAniversario = linha.querySelector(".celula-data");
+
+    nome.value = aniversariante.nome;
+    aniversario.value = aniversariante.aniversario;
+    nome.focus();
     
-    const dia = partesData[0].padStart(2, '0');
-    const mes = partesData[1].padStart(2, '0');
-    const ano = partesData[2];
-    
-    const formatoAceito = `${ano}-${mes}-${dia}`;
+    nome.addEventListener("input", atualizarValorNome);
+    aniversario.addEventListener("input", atualizarValorAniversario);
     
     
-    console.log(formatoAceito)
-
-    const campoName = document.querySelector("#nome");
-    const campoAniversario = document.querySelector("#aniversario")
-
-    campoName.value = nomeAtual;
-    campoAniversario.value = formatoAceito;
-    campoName.focus()
-    
-
-
-
-    campoName.addEventListener("input", updateValueNome);
-    campoAniversario.addEventListener("input", updateValueAniversario);
-
-    function updateValueNome(e) {
-        colunaNome.textContent = e.target.value;
+    function formatarData(data) {
+        const dataAniversario = new Date(data);
+        const dia = dataAniversario.getDate() +1;
+        const mes = dataAniversario.getMonth() + 1;
+        const ano = dataAniversario.getFullYear();
+        const dataFormatada = `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${ano}`;
+        return dataFormatada;
     }
 
-    function updateValueAniversario(e) {
-        colunaAniversario.textContent = e.target.value;
+    function atualizarValorNome(e) {
+        celulaNome.textContent = e.target.value;
+    }
+    
+    function atualizarValorAniversario(e) {
+        const dataFormatada = formatarData(e.target.value);
+        celulaAniversario.textContent = dataFormatada;
     }
 }
+    
+
+
+
+
  
   
   

@@ -46,7 +46,7 @@ body {
     background-color: var(--cor-do-botao);
 }
 
-.button-submit {
+.button-submit, atualizar-button {
     width: 25%;
     padding: 10px;
     border-radius: 10px;
