@@ -1,94 +1,81 @@
-:root {
-    --cor-do-fundo: #FFFFFF;
-    --fonte-principal: 'Open Sans', sans-serif;
-    --cor-da-fonte: #2d3748;
-    --cor-do-botao: #e2e8f0;
-    --cor-botao-hover: #F2F2F2;
-    --cor-borda-tabela: #e2e8f0;
+* {
+    margin: 0;
 }
 
 body {
-    width: 100%;
-    height: 100vh;
-    font-family: var(--fonte-principal);
-    font-size: 1rem;
-    font-weight: 500;
-    background-color: var(--cor-do-fundo);
-    background: var(--cor-do-fundo);
-    text-decoration: none solid rgb(45, 55, 72);
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #fafbfc
 }
 
-.conteudo {
-    margin: 50px;
-}
-
-.titulo {
-    margin-bottom: 50px;
+header {
+    background-color: blueviolet;
+    padding: 10px;
+    color: #fff;
     text-align: center;
-    color: var(--cor-da-fonte);
-    font-size: 2rem;
-    font-weight: 600;
 }
 
-.form {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
+main {
+    padding: 30px 50px;
 }
 
-.form-field {
-    margin: 5px 0;
-    margin-bottom: 30px;
+.card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.lineInput {
+    display: grid;
+    margin-bottom: 10px;
+}
+
+input {
     padding: 10px;
-    border-radius: 10px;
-    border-style: none;
-    color: var(--cor-da-fonte);
-    background-color: var(--cor-do-botao);
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: 0;
 }
 
-.button-submit, atualizar-button {
-    width: 25%;
+button {
+    border: 0px;
     padding: 10px;
-    border-radius: 10px;
-    border-style: none;
-    background-color:var(--cor-do-botao);
-    font-weight: 600;
-    cursor: pointer;
+    outline: 0;
+    background-color: blueviolet;
+    color: #fff;
+    border-radius: 3px;
+    font-weight: bold;
+    transition: all ease 0.3s;
 }
 
-.button-submit:hover {
-    background-color: var(--cor-borda-tabela);
-    transition: background-color 0.5s;
+button:hover {
+    background-color: rgb(110, 34, 182);
 }
 
-.tabela {
+.content {
+    margin-top: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
     width: 100%;
-    margin-top: 30px;
 }
 
-.nome-cabeca, .data-cabeca, .cabeca-acoes {
-    font-style: bold;
-    font-weight: 600;
-    text-align: center;
-    border: 1px solid var(--cor-borda-tabela);
-    padding: 10px;
+table th {
+    background-color: rgb(214, 214, 214);
 }
 
-.nome-cabeca {
-    width: 50%;
-}
-
-.data-cabeca {
-    width: 25%;
-}
-
-.celula-nome, .celula-data, .celula-acoes {
+table th, td {
+    padding: 1px 5px;
     text-align: left;
-    border: 1px solid var(--cor-borda-tabela);
-    padding: 10px;
 }
 
-.celula-acoes {
-    display: flex;
-    justify-content: space-evenly;
+table td img {
+    width: 20px;
+}
+
+.center {
+    text-align: center;
 }
