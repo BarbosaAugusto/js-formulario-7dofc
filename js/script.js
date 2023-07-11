@@ -56,6 +56,7 @@ class Aniversariante {
 
             let imgDelete = document.createElement("img")
             imgDelete.src = "img/delete.svg"
+            imgDelete.setAttribute("onclick", "aniversariante.deletar(" + this.arrayAniversariantes[i].id +")");
             td_acoes.appendChild(imgDelete);
 
 
@@ -101,6 +102,19 @@ class Aniversariante {
     cancelar() {
         document.getElementById("nome").value = "";
         document.getElementById("nascimento").value = "";
+    }
+
+    deletar(id) {
+
+        if(confirm("Deseja realmente deletar o aniversariante do ID " + id  + " ?")) {
+            let tbody = document.getElementById("tbody");
+            for(let i = 0; i < this.arrayAniversariantes.length; i++) {
+                if(this.arrayAniversariantes[i].id == id) {
+                    this.arrayAniversariantes.splice(i, 1);
+                    tbody.deleteRow(i);
+                }
+            }
+        }
     }
 }
 
