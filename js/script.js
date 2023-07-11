@@ -7,8 +7,11 @@ class Aniversariante {
 
     salvar() {
         let aniversariante = this.lerDados();
-        
-        console.log(aniversariante);
+
+        if(this.validaCampos(aniversariante)) {
+            this.adicionar(aniversariante)
+        }
+
     }
 
     lerDados() {
@@ -21,8 +24,24 @@ class Aniversariante {
         return aniversariante;
     }
 
-    validaCampos() {
+    validaCampos(aniversariante) {
 
+        let msg = "";
+
+        if(aniversariante.nomeAniversariante == "") {
+            msg += "- Informe o nome do aniversariante \n"
+        }
+
+        if(aniversariante.nascimento == "") {
+            msg += "-Informe a data de nascimento do aniversariante \n"
+        }
+
+        if(msg != "") {
+            alert(msg);
+            return false;
+        }
+
+        return true;
     }
 
     cancelar() {
