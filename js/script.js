@@ -46,6 +46,17 @@ class Aniversariante {
             td_nomeAniversariante.innerText = this.arrayAniversariantes[i].nomeAniversariante;
             td_nascimento.innerText = dataFormatada;
 
+            td_id.classList.add("center");
+            td_acoes.classList.add("center");
+
+            let imgEdit = document.createElement("img")
+            imgEdit.src = "img/edit.svg"
+            td_acoes.appendChild(imgEdit);
+
+            let imgDelete = document.createElement("img")
+            imgDelete.src = "img/delete.svg"
+            td_acoes.appendChild(imgDelete);
+
 
             
         }
