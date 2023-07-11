@@ -2,7 +2,7 @@ class Aniversariante {
 
     constructor() {
         this.id = 1;
-        this.arrayAniversariante = []
+        this.arrayAniversariantes = []
     }
 
     salvar() {
@@ -12,6 +12,13 @@ class Aniversariante {
             this.adicionar(aniversariante)
         }
 
+        console.log(this.arrayAniversariantes);
+
+    }
+
+    adicionar(aniversariante) {
+        this.arrayAniversariantes.push(aniversariante);
+        this.id++
     }
 
     lerDados() {
