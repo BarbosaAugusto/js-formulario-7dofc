@@ -13,6 +13,7 @@ class Aniversariante {
         }
 
         this.listaTabela();
+        this.cancelar();
         console.log(this.arrayAniversariantes);
 
     }
@@ -98,7 +99,8 @@ class Aniversariante {
     }
 
     cancelar() {
-
+        document.getElementById("nome").value = "";
+        document.getElementById("nascimento").value = "";
     }
 }
 
