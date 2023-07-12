@@ -4,6 +4,8 @@ class Aniversariante {
         this.id = 1;
         this.arrayAniversariantes = []
         this.editId = null;
+        this.carregarDados();
+        this.listaTabela();
     }
 
     salvar() {
@@ -18,8 +20,8 @@ class Aniversariante {
         }
 
         this.listaTabela();
+        this.salvarDados(); 
         this.cancelar();
-        console.log(this.arrayAniversariantes);
 
     }
 
@@ -135,13 +137,34 @@ class Aniversariante {
     deletar(id) {
 
         if(confirm("Deseja realmente deletar o aniversariante do ID " + id  + " ?")) {
+            let data = JSON.parse(localStorage.getItem("aniversariantes"));
             let tbody = document.getElementById("tbody");
+
             for(let i = 0; i < this.arrayAniversariantes.length; i++) {
                 if(this.arrayAniversariantes[i].id == id) {
                     this.arrayAniversariantes.splice(i, 1);
                     tbody.deleteRow(i);
+
+                    let index = data.findIndex(item => item.id == id);
+                    if (index > -1) {
+                        data.splice(index, 1)
+                    }
                 }
+
+                localStorage.setItem("aniversariantes", JSON.stringify(data))
             }
+        }
+    }
+
+    salvarDados() {
+        localStorage.setItem("aniversariantes", JSON.stringify(this.arrayAniversariantes));
+    }
+
+    carregarDados() {
+        const data = localStorage.getItem("aniversariantes");
+        if(data) {
+            this.arrayAniversariantes = JSON.parse(data);
+            this.id = this.arrayAniversariantes.length > 0 ? this.arrayAniversariantes[this.arrayAniversariantes.length - 1].id + 1 : 1;
         }
     }
 }
