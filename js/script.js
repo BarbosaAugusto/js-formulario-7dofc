@@ -60,11 +60,14 @@ class Aniversariante {
             let imgEdit = document.createElement("img")
             imgEdit.src = "img/edit.svg"
             imgEdit.setAttribute("onclick", "aniversariante.prepararEdicao(" + JSON.stringify(this.arrayAniversariantes[i]) +")");
+            imgEdit.classList.add("acoes");
             td_acoes.appendChild(imgEdit);
+
 
             let imgDelete = document.createElement("img")
             imgDelete.src = "img/delete.svg"
             imgDelete.setAttribute("onclick", "aniversariante.deletar(" + this.arrayAniversariantes[i].id +")");
+            imgDelete.classList.add("acoes");
             td_acoes.appendChild(imgDelete);
 
 

@@ -4,17 +4,18 @@
 
 body {
     font-family: 'Nunito Sans', sans-serif;
-    background-color: #EEEEEE;
+    background-color: #f7fafc;
+    text-decoration-color: #2d3748;
 }
 
 header {
-    background-color: #3F72AF;
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    background-color: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     backdrop-filter: blur( 13.5px );
     -webkit-backdrop-filter: blur( 13.5px );
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     padding: 10px;
-    color: #222831;
+    color: #2d3748;
     text-align: center;
 }
 
@@ -23,7 +24,7 @@ main {
 }
 
 .card {
-    background-color: #EEEEEE;
+    background-color: #f7fafc;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
@@ -46,15 +47,17 @@ button {
     border: 0px;
     padding: 10px;
     outline: 0;
-    background-color: #3F72AF;
-    color: #fff;
+    background-color: #FFF;
+    color: #2d3748;
     border-radius: 3px;
     font-weight: bold;
     transition: all ease 0.3s;
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: #112D4E;
+    background-color: #e2e8f0;
+    transform: scale(1.05);
 }
 
 .content {
@@ -82,4 +85,9 @@ table td img {
 
 .center {
     text-align: center;
+}
+
+.acoes {
+    text-align: center;
+    cursor: pointer;
 }
