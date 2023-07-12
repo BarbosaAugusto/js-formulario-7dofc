@@ -3,13 +3,18 @@ class Aniversariante {
     constructor() {
         this.id = 1;
         this.arrayAniversariantes = []
+        this.editId = null;
     }
 
     salvar() {
         let aniversariante = this.lerDados();
 
         if(this.validaCampos(aniversariante)) {
-            this.adicionar(aniversariante)
+            if(this.editId == null) {
+                this.adicionar(aniversariante);
+            } else {
+                this.atualizar(this.editId, aniversariante);
+            }
         }
 
         this.listaTabela();
@@ -52,6 +57,7 @@ class Aniversariante {
 
             let imgEdit = document.createElement("img")
             imgEdit.src = "img/edit.svg"
+            imgEdit.setAttribute("onclick", "aniversariante.prepararEdicao(" + JSON.stringify(this.arrayAniversariantes[i]) +")");
             td_acoes.appendChild(imgEdit);
 
             let imgDelete = document.createElement("img")
@@ -67,6 +73,24 @@ class Aniversariante {
     adicionar(aniversariante) {
         this.arrayAniversariantes.push(aniversariante);
         this.id++
+    }
+
+    atualizar(id, aniversariante) {
+        for(let i = 0; i < this.arrayAniversariantes.length; i++) {
+            if(this.arrayAniversariantes[i].id == id) {
+                this.arrayAniversariantes[i].nomeAniversariante = aniversariante.nomeAniversariante;
+                this.arrayAniversariantes[i].nascimento = aniversariante.nascimento;
+            }
+        }
+    }
+
+    prepararEdicao(dados) {
+        this.editId = dados.id;
+
+        document.getElementById("nome").value = dados.nomeAniversariante;
+        document.getElementById("nascimento").value = dados.nascimento;  
+
+        document.getElementById("btn1").innerText = "atualizar";
     }
 
     lerDados() {
@@ -102,6 +126,10 @@ class Aniversariante {
     cancelar() {
         document.getElementById("nome").value = "";
         document.getElementById("nascimento").value = "";
+
+        document.getElementById("btn1").innerText = "Salvar";
+
+        this.editId = null;
     }
 
     deletar(id) {
